@@ -48,16 +48,13 @@ cd ..
 dotnet sln add theme/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj
 ````
 
-`.Web` projemize AdminLTE tema projesini referans edelim:
+`AbpThemeAdminLte.Web` projemize AdminLTE tema projesini referans edelim:
 
 ````shell
 <ProjectReference Include="..\..\theme\Abp.AspNetCore.Mvc.UI.Theme.AdminLTE\Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj" />
 ````
 
-`AbpThemeAdminLte.AbpThemeAdminLte.Web.AbpThemeAdminLteWebModule.cs` içinde temamızı konfigüre edelim:
-
-
-
+`AbpThemeAdminLte.Web.AbpThemeAdminLteWebModule.cs` web modülünde temamızı konfigüre edelim:
 
 ````csharp
 [DependsOn(
@@ -111,7 +108,7 @@ using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE;
     public class AbpThemeAdminLteWebModule : AbpModule
 ````
 
-AdminLTE temasının css, js, image gibi kaynak dosyaları için **VirtualFileSystem** ayarını yapalım. Bunun için `AbpThemeAdminLte.AbpThemeAdminLte.Web.AbpThemeAdminLteWebModule.cs` dosyasında
+AdminLTE temasının css, js, image gibi kaynak dosyaları için **VirtualFileSystem** ayarını yapalım. Bunun için `AbpThemeAdminLte.Web.AbpThemeAdminLteWebModule.cs` dosyasında
 `ConfigureVirtualFileSystem` methoduna ekleme yapalım:
 
 ````chasrp
@@ -136,8 +133,8 @@ private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
 
 Projeyi **Build** edelim.
 
-Migrator projesini çalıştıralım.
-Web Projesini çalıştıralım.
+`AbpThemeAdminLte.DbMigrator` projesini çalıştıralım.
+`AbpThemeAdminLte.Web` Projesini çalıştıralım.
 
 ![login](screenshots/login.png)
 
@@ -148,3 +145,4 @@ Web Projesini çalıştıralım.
 ![user-management-permissions](screenshots/user-management-permissions.png)
 
 ![account-manage](screenshots/account-manage.png)
+
