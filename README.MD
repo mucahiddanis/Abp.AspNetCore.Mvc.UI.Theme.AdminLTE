@@ -154,6 +154,6 @@ Aktif versiyon
 
 > ABP v3.2.0
 
-`Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj` tema proje dosyasında ABP paketlerinin versiyonalarını güncellemeniz yeterli.
+`Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj` tema proje dosyasında ABP paketlerinin versiyonlarını güncellemeniz yeterli.
 
 ![theme-abp-package-references](screenshots/theme-abp-package-references.png)
