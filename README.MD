@@ -145,6 +145,6 @@ Web Projesini çalıştıralım.
 
 ![user-management](screenshots/user-management.png)
 
-![user-management-permissions](screenshots/user-management-permissionspng)
+![user-management-permissions](screenshots/user-management-permissions.png)
 
 ![account-manage](screenshots/account-manage.png)
