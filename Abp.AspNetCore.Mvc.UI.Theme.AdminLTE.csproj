@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <OutputType>Library</OutputType>
+	  <StartupObject />
+	  <AssemblyName>Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</AssemblyName>
+	  <Authors>mucahiddanis</Authors>
+	  <Description>An ABP theme module based on AdminLTE</Description>
+	  <PackageTags>abp module theme</PackageTags>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <IsPackable>true</IsPackable>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+
+	<ItemGroup>
+		<EmbeddedResource Include="Localization\**\*.json" />
+		<Content Remove="Localization\**\*.json" />
+		<EmbeddedResource Include="wwwroot\**\*" />
+		<Content Remove="wwwroot\**\*" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Content Remove="Pages\Account\Login - Copy.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="3.2.0" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="3.2.0" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="3.2.0" />
+		<PackageReference Include="Volo.Abp.Identity.Web" Version="3.2.0" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Web" Version="3.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Pages\Account\Components\ProfileManagementGroup\Password\Default.cshtml" />
+	  <None Include="Pages\Account\Components\ProfileManagementGroup\PersonalInfo\Default.cshtml" />
+	  <None Include="Pages\Account\ForgotPassword.cshtml" />
+	  <None Include="Pages\Account\LoggedOut.cshtml" />
+	  <None Include="Pages\Account\Login.cshtml" />
+	  <None Include="Pages\Account\Logout.cshtml" />
+	  <None Include="Pages\Account\Manage.cshtml" />
+	  <None Include="Pages\Account\PasswordResetLinkSent.cshtml" />
+	  <None Include="Pages\Account\Register.cshtml" />
+	  <None Include="Pages\Account\ResetPassword.cshtml" />
+	  <None Include="Pages\Account\ResetPasswordConfirmation.cshtml" />
+	  <None Include="Pages\Account\_Layout.cshtml" />
+	  <None Include="Pages\Account\_ViewImports.cshtml" />
+	  <None Include="Pages\Account\_ViewStart.cshtml" />
+	  <None Include="Pages\Identity\Roles\CreateModal.cshtml" />
+	  <None Include="Pages\Identity\Roles\EditModal.cshtml" />
+	  <None Include="Pages\Identity\Roles\Index.cshtml" />
+	  <None Include="Pages\Identity\Users\CreateModal.cshtml" />
+	  <None Include="Pages\Identity\Users\EditModal.cshtml" />
+	  <None Include="Pages\Identity\Users\Index.cshtml" />
+	  <None Include="Pages\TenantManagement\Tenants\ConnectionStringsModal.cshtml" />
+	  <None Include="Pages\TenantManagement\Tenants\CreateModal.cshtml" />
+	  <None Include="Pages\TenantManagement\Tenants\EditModal.cshtml" />
+	  <None Include="Pages\TenantManagement\Tenants\Index.cshtml" />
+	</ItemGroup>
+
+</Project>
