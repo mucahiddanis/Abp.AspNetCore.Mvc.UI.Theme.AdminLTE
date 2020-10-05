@@ -1,10 +1,7 @@
 
-# Abp.AspNetCore.Mvc.UI.Theme.AdminLTE
-ABP framework AdminLTE Theme
+# Using the AdminLTE Theme with the ABP Framework MVC / Razor Pages UI
 
-
-
-It is AdminLTE theme for AspNet MVC / Razor projects developed with ABP framework.
+This article shows step by step how to use the AdminLTE Theme for ABP Framework MVC / Razor Page UI applications.
 
 First, let's install the ABP CLI tool using the command below.
 
