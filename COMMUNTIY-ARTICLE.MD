@@ -150,7 +150,7 @@ Let's run the `AbpThemeAdminLte.DbMigrator` and `AbpThemeAdminLte.Web` project.
 
 Active version
 
-> ABP v3.2.0
+> ABP v3.2.1
 
 You just need to update the versions of ABP packages in the theme project file `Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj`.
 
