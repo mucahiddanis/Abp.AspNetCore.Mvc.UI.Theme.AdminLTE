@@ -20,18 +20,13 @@
 		<EmbeddedResource Include="wwwroot\**\*" />
 		<Content Remove="wwwroot\**\*" />
 	</ItemGroup>
-
-
+	
 	<ItemGroup>
-	  <Content Remove="Pages\Account\Login - Copy.cshtml" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.Identity.Web" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.TenantManagement.Web" Version="3.2.0" />
+		<PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="3.2.1" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="3.2.1" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="3.2.1" />
+		<PackageReference Include="Volo.Abp.Identity.Web" Version="3.2.1" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Web" Version="3.2.1" />
 	</ItemGroup>
 
 	<ItemGroup>
