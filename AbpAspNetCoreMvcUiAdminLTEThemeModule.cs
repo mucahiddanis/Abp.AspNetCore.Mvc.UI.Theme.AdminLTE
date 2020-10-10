@@ -35,7 +35,6 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE
             {
                 options.Themes.Add<AdminLTETheme>();
 
-                // 应用主体风格
                 options.DefaultThemeName = AdminLTETheme.Name;
             });
 

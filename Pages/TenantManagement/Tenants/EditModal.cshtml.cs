@@ -1,53 +1,11 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Volo.Abp.ObjectExtending;
 using Volo.Abp.TenantManagement;
-using Volo.Abp.Validation;
 
 namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.TenantManagement.Tenants
 {
-    public class EditModalModel : TenantManagementPageModel
+    public class EditModalModel : Volo.Abp.TenantManagement.Web.Pages.TenantManagement.Tenants.EditModalModel
     {
-        [BindProperty]
-        public TenantInfoModel Tenant { get; set; }
-
-        protected ITenantAppService TenantAppService { get; }
-
-        public EditModalModel(ITenantAppService tenantAppService)
+        public EditModalModel(ITenantAppService tenantAppService) : base(tenantAppService)
         {
-            TenantAppService = tenantAppService;
-        }
-
-        public virtual async Task<IActionResult> OnGetAsync(Guid id)
-        {
-            Tenant = ObjectMapper.Map<TenantDto, TenantInfoModel>(
-                await TenantAppService.GetAsync(id)
-            );
-
-            return Page();
-        }
-
-        public virtual async Task<IActionResult> OnPostAsync()
-        {
-            ValidateModel();
-
-            var input = ObjectMapper.Map<TenantInfoModel, TenantUpdateDto>(Tenant);
-            await TenantAppService.UpdateAsync(Tenant.Id, input);
-
-            return NoContent();
-        }
-
-        public class TenantInfoModel : ExtensibleObject
-        {
-            [HiddenInput]
-            public Guid Id { get; set; }
-
-            [Required]
-            [DynamicStringLength(typeof(TenantConsts), nameof(TenantConsts.MaxNameLength))]
-            [Display(Name = "DisplayName:TenantName")]
-            public string Name { get; set; }
         }
     }
 }

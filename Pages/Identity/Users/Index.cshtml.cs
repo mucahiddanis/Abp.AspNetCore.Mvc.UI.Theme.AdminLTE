@@ -1,19 +1,7 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Volo.Abp.Identity.Web.Pages.Identity;
-
-namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Identity.Users
+﻿namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Identity.Users
 {
-    public class IndexModel : IdentityPageModel
+    public class IndexModel : Volo.Abp.Identity.Web.Pages.Identity.Users.IndexModel
     {
-        public virtual Task<IActionResult> OnGetAsync()
-        {
-            return Task.FromResult<IActionResult>(Page());
-        }
-
-        public virtual Task<IActionResult> OnPostAsync()
-        {
-            return Task.FromResult<IActionResult>(Page());
-        }
+      
     }
 }

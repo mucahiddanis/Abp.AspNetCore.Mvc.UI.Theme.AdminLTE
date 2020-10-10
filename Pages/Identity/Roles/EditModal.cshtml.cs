@@ -10,55 +10,10 @@ using Volo.Abp.Validation;
 
 namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Identity.Roles
 {
-    public class EditModalModel : IdentityPageModel
+    public class EditModalModel : Volo.Abp.Identity.Web.Pages.Identity.Roles.EditModalModel
     {
-        [BindProperty]
-        public RoleInfoModel Role { get; set; }
-
-        protected IIdentityRoleAppService IdentityRoleAppService { get; }
-
-        public EditModalModel(IIdentityRoleAppService identityRoleAppService)
+        public EditModalModel(IIdentityRoleAppService identityRoleAppService) : base(identityRoleAppService)
         {
-            IdentityRoleAppService = identityRoleAppService;
-        }
-
-        public virtual async Task OnGetAsync(Guid id)
-        {
-            Role = ObjectMapper.Map<IdentityRoleDto, RoleInfoModel>(
-                await IdentityRoleAppService.GetAsync(id)
-            );
-        }
-
-        public virtual async Task<IActionResult> OnPostAsync()
-        {
-            ValidateModel();
-
-            var input = ObjectMapper.Map<RoleInfoModel, IdentityRoleUpdateDto>(Role);
-            await IdentityRoleAppService.UpdateAsync(Role.Id, input);
-
-            return NoContent();
-        }
-
-        public class RoleInfoModel : ExtensibleObject, IHasConcurrencyStamp
-        {
-            [HiddenInput]
-            public Guid Id { get; set; }
-
-            [HiddenInput]
-            public string ConcurrencyStamp { get; set; }
-
-            [Required]
-            [DynamicStringLength(typeof(IdentityRoleConsts), nameof(IdentityRoleConsts.MaxNameLength))]
-            [Display(Name = "DisplayName:RoleName")]
-            public string Name { get; set; }
-
-            [Display(Name = "DisplayName:IsDefault")]
-            public bool IsDefault { get; set; }
-
-            public bool IsStatic { get; set; }
-
-            [Display(Name = "DisplayName:IsPublic")]
-            public bool IsPublic { get; set; }
         }
     }
 }

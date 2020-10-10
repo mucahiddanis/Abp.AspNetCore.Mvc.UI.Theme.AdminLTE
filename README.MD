@@ -19,7 +19,7 @@ dotnet tool update -g Volo.Abp.Cli
 Temayı uygulamak için örnek yeni bir proje oluşturalım:
 
 ````shell
-abp new AbpThemeAdminLte
+abp new AbpThemeAdminLteSample
 ````
 
 Proje ana dizininde Tema projesi için **theme** isminde klasör oluşturalım ve komut satırında **theme** dizinine gidelim:
@@ -48,19 +48,19 @@ cd ..
 dotnet sln add theme/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj
 ````
 
-`AbpThemeAdminLte.Web` projemize AdminLTE tema projesini referans edelim:
+`MyProject.Web` projemize AdminLTE tema projesini referans edelim:
 
 ````shell
 <ProjectReference Include="..\..\theme\Abp.AspNetCore.Mvc.UI.Theme.AdminLTE\Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj" />
 ````
 
-`AbpThemeAdminLte.Web.AbpThemeAdminLteWebModule.cs` web modülünde temamızı konfigüre edelim:
+`AbpThemeAdminLteSample.Web.AbpThemeAdminLteSampleWebModule.cs` web modülünde temamızı konfigüre edelim:
 
 ````csharp
 [DependsOn(
-        typeof(AbpThemeAdminLteHttpApiModule),
-        typeof(AbpThemeAdminLteApplicationModule),
-        typeof(AbpThemeAdminLteEntityFrameworkCoreDbMigrationsModule),
+        typeof(AbpThemeAdminLteSampleHttpApiModule),
+        typeof(AbpThemeAdminLteSampleApplicationModule),
+        typeof(AbpThemeAdminLteSampleEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAutofacModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),
@@ -69,7 +69,7 @@ dotnet sln add theme/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE/Abp.AspNetCore.Mvc.UI.
         typeof(AbpTenantManagementWebModule),
         typeof(AbpAspNetCoreSerilogModule)
         )]
-    public class AbpThemeAdminLteWebModule : AbpModule
+    public class AbpThemeAdminLteSampleWebModule : AbpModule
 ````
 
 
@@ -77,7 +77,7 @@ dotnet sln add theme/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE/Abp.AspNetCore.Mvc.UI.
 typeof(AbpAspNetCoreMvcUiBasicThemeModule),
 ````
 
-Yukarıdaki kodun altına aşağıdaki kodu ekleyelim:
+Yukarıdaki kodu aşağıdaki kod ile değiştirelim:
 
 ````csharp
 typeof(AbpAspNetCoreMvcUiAdminLTEThemeModule),
@@ -93,48 +93,25 @@ using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE;
 
 ````csharp
 [DependsOn(
-        typeof(AbpThemeAdminLteHttpApiModule),
-        typeof(AbpThemeAdminLteApplicationModule),
-        typeof(AbpThemeAdminLteEntityFrameworkCoreDbMigrationsModule),
+        typeof(AbpThemeAdminLteSampleHttpApiModule),
+        typeof(AbpThemeAdminLteSampleApplicationModule),
+        typeof(AbpThemeAdminLteSampleEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAutofacModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),
-        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreMvcUiAdminLTEThemeModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpTenantManagementWebModule),
         typeof(AbpAspNetCoreSerilogModule)
         )]
-    public class AbpThemeAdminLteWebModule : AbpModule
+    public class AbpThemeAdminLteSampleWebModule : AbpModule
 ````
 
-AdminLTE temasının css, js, image gibi kaynak dosyaları için **VirtualFileSystem** ayarını yapalım. Bunun için `AbpThemeAdminLte.Web.AbpThemeAdminLteWebModule.cs` dosyasında
-`ConfigureVirtualFileSystem` methoduna ekleme yapalım:
-
-````chasrp
-private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
-        {
-            if (hostingEnvironment.IsDevelopment())
-            {
-                Configure<AbpVirtualFileSystemOptions>(options =>
-                {
-                    options.FileSets.ReplaceEmbeddedByPhysical<AbpThemeAdminLteDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpThemeAdminLte.Domain.Shared"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AbpThemeAdminLteDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpThemeAdminLte.Domain"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AbpThemeAdminLteApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpThemeAdminLte.Application.Contracts"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AbpThemeAdminLteApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpThemeAdminLte.Application"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AbpThemeAdminLteWebModule>(hostingEnvironment.ContentRootPath);
-
-                    // AdminLTE teması
-                    options.FileSets.ReplaceEmbeddedByPhysical<AbpThemeAdminLteApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Abp.AspNetCore.Mvc.UI.Theme.AdminLTE"));
-                });
-            }
-        }
-````
 
 Projeyi **Build** edelim.
 
-`AbpThemeAdminLte.DbMigrator` projesini çalıştıralım.
-`AbpThemeAdminLte.Web` Projesini çalıştıralım.
+`AbpThemeAdminLteSample.DbMigrator` projesini çalıştıralım.
+`AbpThemeAdminLteSample.Web` Projesini çalıştıralım.
 
 ![login](screenshots/login.png)
 
