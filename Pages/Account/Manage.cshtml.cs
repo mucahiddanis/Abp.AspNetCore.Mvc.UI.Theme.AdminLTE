@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Volo.Abp.Identity;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Volo.Abp.Account.Web.ProfileManagement;
-using Volo.Abp.Validation;
+using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.ProfileManagement;
 
 namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account
 {

@@ -1,5 +1,7 @@
 ﻿using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Bundling;
 using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Localization;
+using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account;
+using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.ProfileManagement;
 using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Toolbars;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
@@ -61,6 +63,9 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE
                 options.Conventions.AuthorizePage("/index");
             });
 
+
+            ConfigureProfileManagementPage();
+
             Configure<AbpBundlingOptions>(options =>
             {
                 options
@@ -81,6 +86,31 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE
                             .AddContributors(typeof(AdminLTEThemeGlobalScriptContributor));
                     });
             });
+        }
+
+        private void ConfigureProfileManagementPage()
+        {
+            Configure<RazorPagesOptions>(options =>
+            {
+                options.Conventions.AuthorizePage("/Account/Manage");
+            });
+
+            Configure<ProfileManagementPageOptions>(options =>
+            {
+                options.Contributors.Add(new AccountProfileManagementPageContributor());
+            });
+
+            Configure<AbpBundlingOptions>(options =>
+            {
+                options.ScriptBundles
+                    .Configure(typeof(ManageModel).FullName,
+                        configuration =>
+                        {
+                            configuration.AddFiles("/Pages/Account/Components/ProfileManagementGroup/Password/Default.js");
+                            configuration.AddFiles("/Pages/Account/Components/ProfileManagementGroup/PersonalInfo/Default.js");
+                        });
+            });
+
         }
     }
 }
