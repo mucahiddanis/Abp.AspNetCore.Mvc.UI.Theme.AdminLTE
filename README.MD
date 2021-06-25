@@ -152,7 +152,7 @@ Projeyi **Build** edelim.
 
 Aktif versiyon
 
-> ABP v3.2.0
+> ABP v4.3.3
 
 `Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj` tema proje dosyasında ABP paketlerinin versiyonlarını güncellemeniz yeterli.
 
