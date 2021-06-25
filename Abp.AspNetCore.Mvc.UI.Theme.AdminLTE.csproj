@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
 	  <OutputType>Library</OutputType>
 	  <StartupObject />
 	  <AssemblyName>Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</AssemblyName>
@@ -18,7 +18,11 @@
 		<EmbeddedResource Include="Localization\**\*.json" />
 		<Content Remove="Localization\**\*.json" />
 		<EmbeddedResource Include="wwwroot\**\*" />
+		<Compile Remove="Pages\TenantManagement\TenantsOld\**" />
+		<Content Remove="Pages\TenantManagement\TenantsOld\**" />
 		<Content Remove="wwwroot\**\*" />
+		<EmbeddedResource Remove="Pages\TenantManagement\TenantsOld\**" />
+		<None Remove="Pages\TenantManagement\TenantsOld\**" />
 	</ItemGroup>
 
 
@@ -27,11 +31,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.Identity.Web" Version="3.2.0" />
-		<PackageReference Include="Volo.Abp.TenantManagement.Web" Version="3.2.0" />
+		<PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.3.3" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="4.3.3" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="4.3.3" />
+		<PackageReference Include="Volo.Abp.Identity.Web" Version="4.3.3" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.3.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -55,7 +59,6 @@
 	  <None Include="Pages\Identity\Users\CreateModal.cshtml" />
 	  <None Include="Pages\Identity\Users\EditModal.cshtml" />
 	  <None Include="Pages\Identity\Users\Index.cshtml" />
-	  <None Include="Pages\TenantManagement\Tenants\ConnectionStringsModal.cshtml" />
 	  <None Include="Pages\TenantManagement\Tenants\CreateModal.cshtml" />
 	  <None Include="Pages\TenantManagement\Tenants\EditModal.cshtml" />
 	  <None Include="Pages\TenantManagement\Tenants\Index.cshtml" />
